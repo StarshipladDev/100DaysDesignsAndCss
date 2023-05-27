@@ -1,0 +1,111 @@
+<!--Gradiant selected from-->
+<!--https://cssgradient.io/-->
+<html>
+	<head>
+	<Title>Day 4</Title>
+		<style>
+		
+		@keyframes outlay {
+		  0%   {left: -20%;}
+		  100% {left: 0%;}
+		}
+		@keyframes outlayGrabber {
+		  0%   {left: 0%;}
+		  100% {left: 31%;}
+		}
+		html{
+			width:100%;
+			height:100%;
+			margin:0px;
+		}
+		body{
+			width:100%;
+			height:100%;
+			margin:0px;
+			background-color:#A0A0A0;
+		}
+		img{
+			width: 100%;
+			height:auto;
+		}
+		#headerBar{
+			width: 80%;
+			height: 15%;
+			margin: 0%;
+			margin-left:10%;
+			border-radius: 20px;
+			text-align:center;
+			display: inline-block;
+		}
+		.headerSection{
+			display: inline-block;
+			text-align:center;
+			width:30%;
+			height:100%;
+			border-radius: 20px;
+			margin-left,margin-right:1%;
+		}
+		.darkGreen{
+			background-color:#3DCC00;
+		}
+		.lightGreen{
+			background-color:#4CFF00;
+		}
+		.bigText{
+			font-weight:bold;
+			font-size:300%;
+		}
+		#TextBody{
+			height:100%;
+			width:80%;
+			border-radius:20px;
+			margin-left:10%;
+			margin-right:10%;
+		}
+		#outlayContainer {
+			width:50%;
+			height:100%;
+			display: inline-block;
+			overflow: hidden;
+			position: absolute;
+			left: -23%;
+		}
+		#outlayContainer:hover{
+			animation: outlay 1s;
+			animation-fill-mode: forwards; 
+		}
+		#outlayTextSection{
+			display: inline-block;
+			border-radius:20%;
+			padding:10%;
+			width:25%;
+			height:75%;
+			background-color:#808080;
+		}
+		#grabber{
+			display: inline-block;
+			width:5%;
+			height:30%;
+		}
+		</style>
+	</head>
+	<body>
+		<div id="headerBar">
+			<div class="headerSection darkGreen bigText">Contact</div>
+			<div class="headerSection lightGreen bigText">Home</div>
+			<div class="headerSection darkGreen bigText">Shop</div>
+		</div>
+		<div id="TextBody">
+			<div id="outlayContainer">
+				<div id="outlayTextSection">
+					<span class="bigText">Further Information</span><br>
+					Some sample text to show that the container object will populate and show when hovered
+				</div>
+				<img id="grabber" src="Grabber.png"></img>
+			</div>
+		</div>
+	</body>
+	
+<div style="padding-top:5%;background-color:white;width:100%; text-align:center;">Inital design image:<br></div>
+<img src= "Design.gif">
+</html>
