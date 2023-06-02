@@ -1,0 +1,98 @@
+<!--Gradiant selected from-->
+<!--https://cssgradient.io/-->
+<html>
+	<head>
+	<Title>Day 7</Title>
+	<link rel="icon" type="image/png" href="https://www.starshiplad.com/Content/WebElements/favicon.png">
+		<style>
+		
+		@keyframes changeGradient {
+		  0%   {
+          	background: linear-gradient(to right, #FF4C78, #FF4C78); 
+            background-color : #FF4C78;
+            }
+		  50% {
+          	background: linear-gradient(to right, #FF4C78, #FF00DC);
+            background-color : #FF00DC;
+            }
+		  100% {
+          	background: linear-gradient(to right, #FF00DC, #FF00DC);
+            background-color : #FF00DC;
+			}
+        }
+		html{
+			width:100%;
+			height:100%;
+			margin:0px;
+		}
+		body{
+			width:100%;
+			height:100%;
+			margin:0px;
+			background-color:#C0C0C0;
+		}
+		img{
+			width: 100%;
+			height:auto;
+		}
+		.SectionContainer{
+			width: 100%;
+			height: 40%;
+			margin: 0%;
+			margin-bottom: 20%;
+			text-align:center;
+		}
+		.Section{
+			width: 30%;
+			height: 30%;
+			border-radius: 50%;
+			padding-top:5%;
+			padding-bottom:15%;
+			margin: 0%;
+			margin-left: 25%;
+			text-align:center;
+            background-color : #FF4C78;
+			background-image: linear-gradient(to right, #FF4C78, #FF4C78);
+		}
+		.Section:hover{
+			animation-name: changeGradient;
+			animation-duration: 1s;
+			animation-fill-mode: forwards;
+		}
+		.SectionText{
+			width:75%;
+			margin-left:12.5%;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="SectionContainer">
+			<div class="Section">
+				<div class="SectionText">
+					When creating a color palette, consider using complementary colors. 
+					These are colors that are opposite each other on the color wheel. 
+					They create a vibrant and harmonious contrast in your designs.<br>
+					
+					Use warm colors, such as reds and oranges, to create a sense of excitement and energy in your designs. 
+					These colors tend to grab attention and can be useful for highlighting important elements.<br>
+				</div>
+			</div>
+		</div>
+		<div class="SectionContainer">
+			<div class="Section">
+				<div class="SectionText">
+					Cool colors, like blues and greens, have a calming effect and are great for creating a sense of tranquility and relaxation. 
+					using them in spaces where you want to promote a peaceful atmosphere.
+					<br>
+
+					Pay attention to the psychological impact of colors. 
+					For example, blue is often associated with trust and reliability, while yellow can evoke feelings of happiness and optimism. 
+					Use this knowledge to influence the mood of your designs.<br>
+				</div>
+			</div>
+		</div>
+	
+		<div style="padding-top:5%;background-color:white;width:100%; text-align:center;">Inital design image:<br></div>
+		<img src= "Design.gif">
+	</body>
+</html>
