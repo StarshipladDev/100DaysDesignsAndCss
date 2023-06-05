@@ -22,3 +22,6 @@ A compilation of 100 days (non-sequential) where a basic png design is turned in
 
 ## Day 6
 ![Day6](Day6/Design.png)
+
+## Day 7
+![Day7](Day7/Design.png)
