@@ -1,0 +1,244 @@
+<html>
+	<head>
+	<Title>Day 9</Title>
+	<!-- Font handling
+	https://www.w3schools.com/csS/css_font_google.asp
+	-->
+	<link rel="icon" type="image/png" href="https://www.starshiplad.com/Content/WebElements/favicon.png">
+		<style>
+		html{
+			margin:0%;
+			padding:0%;
+			width:100%;
+			height:100%;
+		}
+		body{
+			margin:0%;
+			padding:0%;
+			width:100%;
+			height:100%;
+		}
+		img{
+			width:100%:
+		}
+		.ContentLayer{
+			z-index:0;
+			width:100%;
+			height:100%;
+			background-color: #666666;
+			display:inline-block;
+			position: relative;
+		}
+		.ContentBackDrop{
+		
+			font-family: "Ravie", sans-serif;
+			background-color: #E5BD4B;
+			width: 44%;
+			height:75%;
+			padding: 3%;
+			margin-left: 25%;
+			padding-bottom:0%;
+		}
+		.DescriptionContentContainer{
+			height:40%;
+			width:100%;
+			margin-left: 10%;
+			margin-bottom: 0%;
+		}
+		
+		.DescriptionImage{
+			display: inline;
+			font-family: "Ravie", sans-serif;
+			width:10%;
+			height: auto;
+			padding: 0%;
+			margin: 0%;
+		}
+		.SvgCircle{
+			display:inline-block;
+			z-index: 0;
+			position: relative;
+			left: -10%;
+			top: 8%;
+		}
+		.DescriptionContent{
+			position:relative;
+			left:-10%;
+			display: inline-block;
+			font-family: "Ravie", sans-serif;
+			width:75%;
+		}
+		
+		.Option{
+			width: 80%;
+			margin-left: 9%;
+			text-align: center;
+		}
+		
+		.ImageLayer{
+			z-index: 2;
+			position: absolute;
+			width:100%;
+			height:100%;
+			top:0%;
+			left:0%;
+		}
+		.ImageLayer img{
+			z-index: 2;
+			position: absolute;
+		}
+		.border{
+			border-radius: 20px;
+		}
+		.borderBlack{
+			border: 4px solid black;
+		}
+		#armyAnt{
+			position: absolute;
+			left:75%;
+			top:14%;
+			height:78%;
+		}
+		#sceneProp1{
+			position: absolute;
+			left:25%;
+			top:60%;
+			height:50%;
+		}
+		#sceneProp2{
+			position: absolute;
+			left:65%;
+			top:60%;
+			height:50%;
+		}
+		</style>
+	</head>
+	<body >
+		<div class = "ContentLayer">
+			<div id="appendOptionsTo" class = "ContentBackDrop border">
+			
+				<div class="DescriptionContentContainer border">
+					<div class="DescriptionImage"> 
+						<img src="ArmyAntHead.png" style="position: relative;left: 0%;z-index: 1;"> </img>
+						<svg height="100" width="100" class="SvgCircle">
+						  <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="black"></circle>
+						<circle cx="50" cy="50" r="30" stroke="black" stroke-width="3" fill="#E5BD4B"></circle>
+						</svg>
+					</div>
+					
+					 <div id="DescriptionContent" class="DescriptionContent border borderBlack">
+						Font is Ravie. A thing happens when you press the options below.<br>
+						Font is Ravie. A thing happens when you press the options below.<br>
+						Font is Ravie. A thing happens when you press the options below.
+					</div>
+				</div>
+				<div class = "Option border borderBlack">
+						This is Option 1, Select As Reqired
+				</div>
+				
+				<div class = "Option border borderBlack">
+						This is Option 2, Select As Reqired
+				</div>
+				
+				<div class = "Option border borderBlack">
+						This is Option 3, Select As Reqired
+				</div>
+				
+				<div class = "Option border borderBlack">
+						This is Option 4, Select As Reqired
+				</div>
+			</div>
+			
+			<img id="sceneProp1" src="Fern.png"> </img>
+			<img id="sceneProp2" src="Fern.png"> </img>
+			<img id="armyAnt" src="ArmyAnt.png"> </img>
+		</div>
+		
+		<div style="text-align:center; width:100%; height:100%;">
+			<div style="padding-top:5%;background-color:white;width:100%; text-align:center;">
+				Initial Design Image:<br>
+			</div>
+			<img src= "Design.png">
+		</div>
+	<script>
+		class Enviroment{
+			constructor(enviromentImage){
+				this.enviromentImage = enviromentImage;
+			}
+		}
+		class Decision{
+			constructor(enviromentOfDecision, childrenDecisions, parentDecision, decisionText, decisionOptionText){
+				this.enviromentOfDecision = enviromentOfDecision;
+				this.childrenDecisions = childrenDecisions;
+				this.parentDecision = parentDecision;
+				this.decisionText = decisionText;
+				this.decisionOptionText = decisionOptionText;
+			}
+			
+			SetParentDecision(parentDecision){
+				this.parentDecision = parentDecision;
+			}
+		}
+		let currentEnvironment = new Enviroment("Fern");
+		
+		function CreateOptionForEachDecision(decision, index, appendOptionsToElement){
+			console.log('decision to append is ',decision);
+			var newOption = document.createElement("div");
+			newOption.classList.add('Option');
+			newOption.classList.add('border');
+			newOption.classList.add('borderBlack');
+			newOption.onclick = function() {
+				console.log("Just clicked button corresponding to ",decision.decisionText);
+				UpdateBasedOnDecision(decision);
+			};
+			newOption.innerHTML = decision.decisionOptionText;
+			console.log("appending element  newOption ",newOption);
+			console.log("appendOptionsToElement are ",appendOptionsToElement);
+			appendOptionsToElement.appendChild(newOption);
+		}
+		function MakeCurrentOptionsNull(option){
+			option.parentNode.removeChild(option);
+			option=null;
+		}
+		function UpdateBasedOnDecision(decisionPassedIn){
+			console.log("\n\n Updating Options");
+			var prop1 = document.getElementById('sceneProp1');
+			var prop2 = document.getElementById('sceneProp2');
+			if(prop1 && prop2){
+				prop1.src = decisionPassedIn.enviromentOfDecision.enviromentImage+".png";
+				prop2.src = decisionPassedIn.enviromentOfDecision.enviromentImage+".png";
+			}
+			var appendOptionsToElement = document.getElementById('appendOptionsTo');
+			if(appendOptionsToElement){
+				var descriptionContent = document.getElementById('DescriptionContent');
+				descriptionContent.innerHTML = decisionPassedIn.decisionText;
+				console.log("appendOptionsToElement was, on selection ",appendOptionsToElement);
+				var currentOptions = appendOptionsToElement.getElementsByClassName('Option');
+				console.log("Current options are ",currentOptions);
+				while(currentOptions.length>0){
+					for (let i =0; i< currentOptions.length; i++) {
+						var item = currentOptions[i];
+						console.log("Removing option ",item," of ",currentOptions.length);
+						MakeCurrentOptionsNull(item);
+					}
+				}
+				console.log("Current options are now ",currentOptions);
+				console.log("appendOptionsToElement are ",appendOptionsToElement);
+				decisionPassedIn.childrenDecisions.forEach(function (decision, index) {
+					CreateOptionForEachDecision(decision, index, appendOptionsToElement)
+				});
+			}
+			
+		}
+		
+		var treeDecision = new Decision(new Enviroment("Fern"),[],null,"You head into the forest","Head Into The Forest");
+		var cityDecision = new Decision(new Enviroment("Ruin"),[],null,"You head into the city","Head Into The City");
+		var initalDecision = new Decision(new Enviroment("Fern"),[treeDecision,cityDecision],null,"Go Home","Do you go into the city or the forest? ");
+		treeDecision.SetParentDecision(initalDecision);
+		cityDecision.SetParentDecision(initalDecision);
+		UpdateBasedOnDecision(initalDecision);
+	
+	</script>
+	</body>
+	
+</html>
