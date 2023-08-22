@@ -1,0 +1,63 @@
+<html>
+	<head>
+		<title>
+			Day 10
+		</title>
+		<style>
+			.text-section{
+				height: 25%;
+				width:100%;
+				margin: 0%;
+			}
+			.floating{
+				dominant-baseline: auto;
+			}
+			.hanging{
+
+				dominant-baseline: hanging;
+			}
+			.middle{
+				text-anchor: middle;
+			}
+			.start{
+
+				text-anchor: start;
+			}
+			.end{
+
+				text-anchor: end;
+			}
+			.text-border{
+				border: 1px solid black;
+			}
+		</style>
+	</head>
+
+	<body style="background-color:pink">
+		<div class="text-section">
+			<svg><text y="10%" x="50%" class=" text-border floating">
+				floating text
+			</text> </svg>
+		</div>
+		<div class="text-section">
+			<svg><text y="10%" x="50%" class=" text-border hanging">
+				hanging text
+			</text> </svg>
+		</div>
+		<div class="text-section">
+			<svg><text y="10%" x="50%" class=" text-border middle">
+				centered text
+			</text> </svg>
+		</div>
+		<div class="text-section">
+			<svg><text y="10%" x="50%" class=" text-border start">
+				starting text
+			</text> </svg>
+		</div>
+		<div class="text-section">
+			<svg><text y="10%" x="50%" class=" text-border end">
+				ending text
+			</text> </svg>
+		</div>
+	</body>
+</html>
