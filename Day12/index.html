@@ -1,0 +1,152 @@
+<html>
+
+<head>
+    <Title>Day 12</Title>
+    <style>
+        .content-layer {
+            z-index: 0;
+            width: 100%;
+            min-height: 100%;
+            background-color: #666666;
+            display: inline-block;
+            position: relative;
+        }
+
+        .cog {
+            background-image: url("Gear.png");
+            background-size: 327px 327px;
+            ;
+            position: absolute;
+            z-index: 0;
+            left: 40%;
+        }
+
+        .low {
+
+            top: 10%;
+        }
+        .lower {
+
+            top: calc(10% + 270px);
+        }
+        .lowest {
+
+            top: calc(10% + 600px);
+        }
+
+        .text-section {
+            z-index: 1;
+            display: relative;
+            padding-bottom: 5%;
+            padding-top: 5%;
+            text-align: center;
+            background-color: lightblue;
+            margin-bottom:0%;
+            min-height:5%;
+            width:75%;
+            margin-left: 12.5%;
+            margin-right: 12.5%;
+        }
+
+        .top-buffer{
+
+            margin-top: 10%;
+        }
+
+        .overall-container {
+            position: relative;
+            z-index: 1;
+
+        }
+
+        .text-container {
+            position: relative;
+            z-index: 1;
+
+        }
+
+        span{
+            display:block;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="content-layer">
+        <div class="overall-container">
+            <div class="text-container">
+
+                <div class="text-section">
+                    <h2>
+                        08. Keep your designs simple
+                    </h2>
+                    <span>Keep it simple, but don’t forget your basics.</span> 
+                    <span>Make sure every element has a reason to be in the design and keep the number of fonts, colors, shapes and frames to a minimum.</span>
+                    <span>Use contrasting tonal color combinations to text is sharp and easy to read.</span>
+                    <span>Applying a solid frame to contain your copy will enhance the compositional structure of a design.</span>
+                    <span style="font-size: 50%">From <a href="https://www.canva.com/learn/graphic-design-tips-non-designers/">canva.com</a></span>
+                </div>
+                <div class="text-section top-buffer">
+                    <h2>
+                        09. Use the same design elements on every page
+                    </h2>
+                    <span>The easiest way to ensure aesthetic unity across a document or presentation is by duplicating pages then editing text and replacing images.</span>
+                    <span style="font-size: 50%">From <a href="https://www.canva.com/learn/graphic-design-tips-non-designers/">canva.com</a></span>
+                </div>
+                <div class="text-section top-buffer">
+                    <h2>
+                        10. Be original
+                    </h2>
+                    <span>Push your creative abilities and graphic design skills to achieve original graphics. </span>
+                    <span>Be inventive and experimental and choose and combine different typefaces and filters. </span>
+                    <span>Avoid trends and create designs that correspond with your own unique style, leaving a personal stamp on your work.</span>
+                    <span style="font-size: 50%">From <a href="https://www.canva.com/learn/graphic-design-tips-non-designers/">canva.com</a></span>
+                </div>
+            </div>
+            <svg class="cog low" id="cogImage" width="327" height="327"> </svg>
+            <svg class="cog lower" id="cogImage" width="327" height="327"> </svg>
+            <svg class="cog lowest" id="cogImage" width="327" height="327"> </svg>
+
+
+        </div>
+    </div>
+
+
+    <div style="text-align:center; width:100%; height:100%;">
+        <div style="padding-top:5%;background-color:white;width:100%; text-align:center;">
+            Initial Design Image:<br>
+        </div>
+        <img src="Design.gif">
+        <div>
+            <h1> Explaination</h1>
+            <span>A company I found out about (I have since forgotten what they're called ) had a cool feature on the
+                desktop view of their main page that would have text sections with a large gap between then.</span>
+            <span>In the gap, was a cog that would rotate as you scrolled down, which I thought was a really cool
+                effect.</span>
+
+        </div>
+    </div>
+    <script>
+
+        // Code sources used https://www.w3schools.com/jsref/event_onscroll.asp
+        // https://www.w3schools.com/cssref/css3_pr_background-size.php
+        window.onscroll = function () { myFunction() };
+
+        function myFunction() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+
+                const cogElements = document.getElementsByClassName("cog");
+                console.log("cogElements are ",cogElements);
+                for(let i =0; i< cogElements.length; i++){
+
+                    element = cogElements.item(i);
+                    element.setAttribute("transform", `rotate(${document.body.scrollTop /2 },0,0)`);
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>>
