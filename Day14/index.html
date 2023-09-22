@@ -1,0 +1,125 @@
+<html>
+
+<head>
+    <style>
+        .content-layer {
+            z-index: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #666666;
+            display: inline-block;
+            position: relative;
+        }
+
+        span {
+            display: block;
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        #svgClear {
+            position: absolute;
+            left: calc(50% - 300px);
+        }
+
+        .image {
+            background-size: cover;
+            width: 50%;
+            height: 50%;
+        }
+
+        .image1 {
+            background-image: url("BadPic.png");
+        }
+
+        .image2 {
+            background-image: url("GoodPic.png");
+        }
+
+        .center-text {
+            text-anchor: middle;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content-layer">
+        <svg id="svgClear" width="100%" height="100%" onmousemove="onMouseMove()" onmouseup="mouseUp()">
+            <defs>
+                <clipPath id="cut-off-left">
+                    <rect id="clip-left-rect" x="0" y="0" width="300" height="600" />
+                </clipPath>
+                <clipPath id="cut-off-right">
+                    <rect id="clip-right-rect" x="300" y="0" width="300" height="600" />
+                </clipPath>
+            </defs>
+            <image href="BadPic.png" x="0" height="600" width="600" clip-path="url(#cut-off-bottom)" />
+            <image href="GoodPic.png" x="0" height="600" width="600" clip-path="url(#cut-off-right)" />
+            <circle id="move-circle" cx="300" cy="300" fill="black" r="20" onmousedown="mouseDown()" />
+            <text x="300" y="50" class="center-text"> Click and drag the black dot to compare</text>
+        </svg>
+    </div>
+
+    <div style="text-align:center; width:100%; height:100%;">
+        <div style="padding-top:5%;background-color:white;width:100%; text-align:center;">
+            Initial Design Image:<br>
+        </div>
+        <img src="Design.gif">
+        <div>
+            <h1> Explanation</h1>
+            <span> Fun and engaging interactable elements always sit on my mind until I can replicate them </span>
+            <span> Today's design is based on a (tragically) engaging slider that easily demonstrated the devastation of
+                the Libyan floods by allowing a user to slide
+                a central element to show more or less of two comparison images
+            </span>
+            <span style="font-weight: bold"> Link: </span>
+            <a
+                href="https://www.theguardian.com/world/2023/sep/13/libya-flooding-before-and-after-satellite-images-northeastern-floods-derna">www.theguardian.com</a>
+
+        </div>
+    </div>
+
+
+    <script>
+        const getMousePos = (evt) => {
+            const pos = evt.currentTarget.getBoundingClientRect();
+
+            console.log(`getMousePos with c, y ${evt.clientX},${evt.clientY}`);
+            return {
+                x: evt.clientX - pos.left,
+                y: evt.clientY - pos.top
+            };
+        };
+
+        let isDown = false;
+        document
+            .getElementById("svgClear").
+            addEventListener('mousemove', (evt) => {
+                console.log("mousemoved");
+                if (isDown) {
+
+                    const mPos = getMousePos(evt);
+                    document.getElementById("move-circle").setAttribute("cx", Math.min(mPos.x, 600));
+                    document.getElementById("clip-left-rect").setAttribute("width", Math.min(mPos.x, 600));
+                    document.getElementById("clip-right-rect").setAttribute("x", Math.min(mPos.x, 600));
+                    document.getElementById("clip-right-rect").setAttribute("width", Math.max(300 - mPos.x, 600));
+                }
+            });
+        function onMouseMove() {
+
+        }
+        function mouseUp() {
+            isDown = false;
+            console.log(`mouseUp, is down is ${isDown}`);
+        }
+        function mouseDown() {
+            isDown = true;
+            console.log(`mouseDown, is down is ${isDown}`);
+        }
+    </script>
+</body>
+
+</html>
