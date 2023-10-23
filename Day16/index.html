@@ -1,0 +1,80 @@
+<html>
+
+<head>
+    <Title>Day 15</Title>
+    <style>
+        body {
+            margin: 0%;
+        }
+
+        .content-layer {
+            z-index: 0;
+            width: 100%;
+            min-height: 100%;
+            display: inline-block;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="content-layer">
+
+        <div id="svg-container">
+            <svg id="svg" width="600" height="600">
+                <line id="red" x1="0" y1="0" x2="100" y2="100" stroke="red"> </line>
+                <line id="blue" x1="0" y1="100" x2="200" y2="200" stroke="blue"> </line>
+                <line id="yellow" x1="0" y1="200" x2="300" y2="300" stroke="yellow"> </line>
+            </svg>
+        </div>
+
+
+        <div style="text-align:center; width:100%; height:100%;">
+            <div style="padding-top:5%;background-color:white;width:100%; text-align:center;">
+                Initial Design Image:<br>
+            </div>
+            <img src="Design.png">
+            <div>
+                <h1> Explaination</h1>
+                <span>A simple play around with color theory, using new DIvs on top of old content (the cogs) and
+                    floating / inline block.
+
+            </div>
+        </div>
+        <script>
+            let count = 0;
+            window.onmousemove = function (e) { hoverFunction(e) };
+
+            function hoverFunction(e) {
+                console.log('e is ', e);
+                let x = e.clientX;
+                let y = e.clientY;
+                let redValue = Math.floor(Math.random() * 600);
+                let blueValue = Math.floor(Math.random() * 600);
+                let yellowValue = Math.floor(Math.random() * 600);
+                let red = document.getElementById('red');
+                let blue = document.getElementById('blue');
+                let yellow = document.getElementById('yellow');
+                red.setAttribute('y1', y);
+                red.setAttribute('x1', x);
+                yellow.setAttribute('y1', y);
+                yellow.setAttribute('x1', x);
+                blue.setAttribute('y1', y);
+                blue.setAttribute('x1', x);
+                if (count % 100 == 0) {
+
+                    red.setAttribute('y2', redValue);
+                    red.setAttribute('x2', redValue);
+                    yellow.setAttribute('y2', blueValue);
+                    yellow.setAttribute('x2', blueValue);
+                    blue.setAttribute('y2', yellowValue);
+                    blue.setAttribute('x2', yellowValue);
+                }
+                count++;
+            }
+        </script>
+</body>
+
+</html>
