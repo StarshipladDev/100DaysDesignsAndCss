@@ -1,0 +1,121 @@
+<html>
+
+<head>
+    <Title>Day 16</Title>
+    <style>
+        body {
+            margin: 0%;
+        }
+
+        .content-layer {
+            z-index: 0;
+            width: 100%;
+            min-height: 100%;
+            display: inline-block;
+            position: relative;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #svg {
+            background-color: gray;
+        }
+
+        span{
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="content-layer">
+
+        <div id="svg-container">
+            <h1 id = "header">Move Mouse Below</h1>
+            <svg id="svg" width="100%" height="600">
+                <line id="red-line" x1="0" y1="0" x2="100" y2="100" stroke="red"> </line>
+                <line id="blue-line" x1="0" y1="100" x2="200" y2="200" stroke="blue"> </line>
+                <line id="orange-line" x1="0" y1="200" x2="300" y2="300" stroke="orange"> </line>
+                <line id="purple-line" x1="0" y1="200" x2="300" y2="300" stroke="purple"> </line>
+                <circle id="orange-circle" cx="0" cy="200" r="5" fill="orange"> </circle>
+                <circle id="blue-circle" cx="0" cy="100" r="5" fill="blue"> </circle>
+                <circle id="red-circle" cx="0" cy="0" r="5" fill="red"> </circle>
+                <circle id="purple-circle" cx="0" cy="0" r="5" fill="purple"> </circle>
+            </svg>
+        </div>
+
+
+        <div style="text-align:center; width:100%; height:100%;">
+            <div style="padding-top:5%;background-color:white;width:100%; text-align:center;">
+                Initial Design Image:<br>
+            </div>
+            <img src="Design.gif">
+            <div>
+                <h1> Explaination</h1>
+                <span>A friend linked me the following <a href="https://my-portfolio-rahmsc.vercel.app/">developer profile</a>, and I enjoyed the reactivity of the background </span>
+                <span> I wanted to design something that would also react to a user's mouse input while navigating the rest of the page</span>
+
+            </div>
+        </div>
+        <script>
+            let count = 0; // Used to time updates
+            const _countlimit = 50;
+            const _svgHeight = 600;
+            let randomX = 0;
+            let randomY = 0;
+            const colorList = ['red', 'blue', 'orange', 'purple'];
+            const shapeList = ['circle', 'line'];
+            window.onmousemove = function (e) { hoverFunction(e) };
+
+            function hoverFunction(e) {
+                console.log('e is ', e);
+                const svg = document.getElementById('svg');
+                const svgWidth = svg.clientWidth;
+                
+                const headerHeight = document.getElementById('header').clientHeight;
+                const x = e.clientX;
+                const y = e.clientY - headerHeight * 2;
+                let draw = false;
+                if (count % _countlimit == 0) {
+                    draw = true;
+                    count = 0;
+                }
+                colorList.map(color => {
+                    if (draw) {
+                        randomX = Math.floor(Math.random() * svgWidth);
+                        randomY = Math.floor(Math.random() * _svgHeight);
+                    }
+                    shapeList.map(shape => {
+
+
+                        const elementToGet = document.getElementById(`${color}-${shape}`);
+                        switch (shape.toLowerCase()) {
+                            case 'line':
+                                elementToGet.setAttribute('x1', x);
+                                elementToGet.setAttribute('y1', y);
+                                if (draw) {
+                                    elementToGet.setAttribute('x2', randomX);
+                                    elementToGet.setAttribute('y2', randomY);
+                                }
+                                break;
+                            case 'circle':
+                                if (draw) {
+                                    elementToGet.setAttribute('cy', randomY);
+                                    elementToGet.setAttribute('cx', randomX);
+                                }
+                                break;
+                        }
+
+                    });
+                });
+
+                count++;
+            }
+        </script>
+</body>
+
+</html>
