@@ -98,3 +98,9 @@ A compilation of 100 days (non-sequential) where a basic png design is turned in
 
 
 [Day16 WebLink](https://starshiplad.com/100Designs/Day16/)
+
+## Day 17
+![Day17](Day17/Design.gif)
+
+
+[Day17 WebLink](https://starshiplad.com/100Designs/Day17/)
