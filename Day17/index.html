@@ -48,14 +48,26 @@
             top: 10%;
         }
 
-        #front{
-            z-index:1;
+        #front {
+            z-index: 1;
             top: 50%;
             left: 50%;
         }
 
         .text-parent {
             background-color: gray;
+            opacity: 0.5;
+            top: -25%;
+            position: relative;
+            right: 50%;
+        }
+
+        .text-content {
+            background-color: lightgray;
+            width: 50%;
+            margin-left: 25%;
+            height: 100%;
+            opacity: 1;
         }
     </style>
 </head>
@@ -69,7 +81,8 @@
             <div class="content-class" id="front">
                 <div class="text-parent">
                     <div class="text-content">
-                        <span> Here's some text</span>
+                        <h1 id="header">Text Content Goes here</h1>
+                        <span> Text remains even with animated background</span>
                     </div>
                 </div>
             </div>
@@ -163,6 +176,9 @@
 
             count++;
         }
+
+
+        setInterval(compareLines, 100);
     </script>
 
 </body>
